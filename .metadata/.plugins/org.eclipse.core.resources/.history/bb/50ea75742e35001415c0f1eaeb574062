@@ -1,0 +1,16 @@
+
+public class start {
+	public static void main(String[] args)
+	{
+		int[] array = {1,5,2,5,8,3,0,9};
+		System.out.println("Starting Insertion sort on:" + array2String(array));
+	}
+	
+	private static String array2String(int[] a){
+		String s = "";
+		for(int i:a){
+			s+=" " + i + " ";
+		}
+		return s;
+	}
+}

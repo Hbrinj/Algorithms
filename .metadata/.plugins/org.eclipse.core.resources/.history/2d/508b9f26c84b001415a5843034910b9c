@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">mendilink</string>
+    <string name="hello_world">testing NFC</string>
+    <string name="action_settings">Settings</string>
+    <string name="writeButton">Write to NFC</string>
+
+</resources>

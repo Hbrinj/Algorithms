@@ -1,0 +1,10 @@
+
+public class Graph {
+	GraphNode root;
+	public enum LR {left,right};
+	
+	public Graph(GraphNode n){
+		root = n;
+	}
+	
+}

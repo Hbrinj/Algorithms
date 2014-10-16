@@ -1,0 +1,7 @@
+
+public class findMostFrequent {
+	static int a[] = {10,3,500,2,3,4,3,10,2,13,98};
+	public static void main(String argv[]){
+		
+	}
+}

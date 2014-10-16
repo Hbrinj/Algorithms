@@ -1,0 +1,23 @@
+
+public class euler4 {
+	public static void main(String argv[]){
+		int max = 0;
+		for(int i = 100; i < 999; i++){
+			for(int j = 100; i < 999; i++){
+				String s = Integer.toString(i*j);
+				System.out.println(s);
+				if(s.equals(reverse(s)))
+					max = i*j;
+			}
+		}
+		System.out.println(max);
+	}
+	
+	public static String reverse (String s){
+		StringBuilder sb = new StringBuilder();
+		for(int i = s.length() -1; i > 0; i--){
+			sb.append(s.charAt(i));
+		}
+		return sb.toString();
+	}
+}

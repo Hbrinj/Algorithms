@@ -1,0 +1,19 @@
+
+public class reverseString2 {
+	public static void main(String argv[]){
+		String s = "Hello!";
+		iterRev(s);
+	}
+	
+	public static void iterRev(String s){
+		int i = 0;
+		int j = s.length()-1;
+		char[] c = s.toCharArray();
+		for(; i < (s.length()-1) /2; i++){
+			char t = c[i];
+			c[i] = c[j];
+			c[j] = t;
+			j--;
+		}
+	}
+}

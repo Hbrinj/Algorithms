@@ -1,0 +1,105 @@
+
+public class AVL extends BST{
+	
+	public AVL(){
+		super();
+	}
+	
+	public AVL(Node<Integer> n){
+		super(n);
+	}
+	
+	public void add(int n){
+		Node<Integer> newNode = insert(n);
+		rebalanceTree(newNode);
+	}
+	
+	public void remove(int n){
+		Node<Integer> newNode = delete(n);
+		rebalanceTree(newNode);
+	}
+	
+	private void right_rotate(Node<Integer> n)
+	{
+		Node<Integer> newParent = n.left;
+		n.left = newParent.right; //give the right child of the left node to the old root;
+		if(n.left != null)
+			n.left.parent = n;
+		
+		newParent.right = n; // the new roots right child is the oldroot
+		n.parent = newParent; // the old roots parent is no the new root
+		
+		newParent.parent = n.parent; // the new root's parent is the old roots parent
+		
+		
+		
+		if(n.parent == null)
+			root = newParent;
+		else{
+			if(n.parent.left == n)
+				newParent.parent.left = newParent;
+			else
+				newParent.parent.right = newParent;
+		}
+		
+		updateHeight(n);
+		updateHeight(newParent);
+	}
+	
+	private void left_rotate(Node <Integer> n){
+		Node<Integer> newParent = n.right;
+		n.right = newParent.left;
+		if(n.left != null)
+			n.right.parent = n;
+		
+		newParent.left = n;
+		n.parent = newParent;
+		
+		if(n.parent == null)
+			root = newParent;
+		else{
+			if(n.parent.left == n)
+				newParent.parent.left = newParent;
+			else
+				newParent.parent.right = newParent;
+		}
+		
+		updateHeight(n);
+		updateHeight(newParent);
+		
+	}
+	
+	private void rebalanceTree(Node<Integer> node){
+		while(node != null){
+			updateHeight(node);
+			if(getHeight(node.left) >= 2+(getHeight(node.right))){
+				if(getHeight(node.left.left) >= getHeight(node.left.right))
+					right_rotate(node);
+				else{
+					left_rotate(node.left);
+					right_rotate(node);
+				}
+			}else if(getHeight(node.right) >= 2+(getHeight(node.left))){
+				if(getHeight(node.right.right) >= getHeight(node.right.left))
+					left_rotate(node);
+				else{
+					right_rotate(node.right);
+					left_rotate(node);
+				}
+			}
+			
+			node = node.parent;
+		}
+	}
+	
+	private void updateHeight(Node<Integer> n){
+		n.height = Math.max(getHeight(n.left), getHeight(n.right)) +1;
+	}
+	
+	private int getHeight(Node<Integer> node){
+		if(node == null)
+			return -1;
+		else
+			return node.height;
+	}
+}

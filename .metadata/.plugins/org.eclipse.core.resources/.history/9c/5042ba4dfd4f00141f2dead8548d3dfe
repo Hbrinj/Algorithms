@@ -1,0 +1,14 @@
+
+public class GraphNode {
+	private enum Colour {white,grey,black};
+	Colour me;
+	char L;
+	GraphNode children[];
+	GraphNode Parent;
+	
+	public GraphNode(char z,int childSize){
+		me = Colour.white;
+		L = z;
+		children = new GraphNode[childSize];
+	}
+}

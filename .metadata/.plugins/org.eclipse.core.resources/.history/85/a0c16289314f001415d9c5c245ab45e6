@@ -1,0 +1,6 @@
+
+public class euler3 {
+	public static void main(String argv[]){
+		600851475143
+	}
+}

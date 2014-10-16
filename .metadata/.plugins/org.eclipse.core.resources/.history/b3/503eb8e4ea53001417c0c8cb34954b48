@@ -1,0 +1,18 @@
+
+public class Fibonacci {
+	public static void main(String argv[]){
+		iterFib();
+	}
+	
+	public static void iterFib(){
+		int x = 0;
+		int y = 1;
+		
+		while(y < 300){
+			int t = x+y;
+			x = y;
+			y = t;
+			System.out.println(y);
+		}
+	}
+}

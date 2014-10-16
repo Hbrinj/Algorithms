@@ -1,0 +1,11 @@
+
+public class AVL extends BST{
+	
+	public AVL(){
+		super();
+	}
+	
+	public AVL(Node<Integer> n){
+		super(n);
+	}
+}

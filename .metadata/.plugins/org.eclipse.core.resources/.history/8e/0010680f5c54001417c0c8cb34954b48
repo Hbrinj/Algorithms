@@ -1,0 +1,60 @@
+
+public class PriorityQueue {
+	private static final int INITIAL_CAPACITY = 20;
+	private int[] Q;
+	private int currentSize;
+	
+	public PriorityQueue (){
+		this(INITIAL_CAPACITY);
+	}
+	
+	public PriorityQueue(int size){
+		Q = new int[size];
+		currentSize = 0;
+	}
+	
+	public void add(int n){
+		if(currentSize == Q.length)
+			//resize();
+		Q[currentSize] = n;
+		trickleUp(currentSize++);
+	}
+	
+	private void trickleUp(int index){
+		int parent = (index-1)/2;
+		int bottom = Q[index];
+		while(parent > 0 && Q[parent] < bottom){
+			Q[index] = Q[parent];
+			index = parent;
+			parent = (parent-1)/2;
+		}
+		Q[index] = bottom;
+	}
+	
+	public void remove(){
+		int t = Q[0];
+		Q[0] = Q[--currentSize];
+		trickleDown(0);
+	}
+	
+	private void trickleDown(int s){
+		int root = s;
+		while(root < currentSize){
+			int child = root*2+1;
+			if(child +1 < currentSize && Q[child] < Q[child+1])
+				child++;
+			
+			if(Q[child] > Q[root]){
+				swap(child,root);
+				root = child;
+			}else
+				return;
+		}
+	}
+	
+	private void swap(int i, int j){
+		int t = Q[i];
+		Q[i] = Q[j];
+		Q[j] = t;
+	}
+}

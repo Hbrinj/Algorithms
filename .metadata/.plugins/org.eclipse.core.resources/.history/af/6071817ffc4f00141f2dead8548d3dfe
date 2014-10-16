@@ -1,0 +1,25 @@
+
+public class Graph {
+	GraphNode root;
+	public enum LR {left,right};
+	
+	public Graph(GraphNode n){
+		root = n;
+	}
+	
+	public void add(GraphNode n,GraphNode p, LR l ){
+		if(l == LR.left){
+			if(p.Left == null)
+				p.Left = n;
+			else
+				return;
+		}else{
+			if(p.Right == null)
+				p.Right = n;
+			else
+				return;
+		}
+		n.Parent = p;
+	}
+	
+}

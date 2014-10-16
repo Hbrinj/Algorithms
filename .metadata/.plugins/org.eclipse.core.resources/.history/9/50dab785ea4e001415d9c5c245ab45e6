@@ -1,0 +1,48 @@
+
+public class PrefixTree {
+	private PrefixNode root;
+	private int offset = 97;
+	public PrefixTree(){
+		root = new PrefixNode('\0');
+	}
+	
+	public void insertWord(String s){
+		if(s == null)
+			return;
+		int l = s.length();
+		char letter[] = s.toCharArray();
+		PrefixNode current = root;
+		for(int i = 0; i < l ; i++){
+			if(current.children[letter[i] - offset] == null){
+				current.children[letter[i] - offset] = new PrefixNode(letter[i]);
+			}
+			current = current.children[letter[i] - offset];
+		}
+	}
+	
+	public boolean findWord(String s){
+		if(s==null)
+			return false;
+		int l = s.length();
+		char letter[] = s.toCharArray();
+		PrefixNode current = root;
+		int i;
+		for(i = 0; i < l; i++){
+			if(current.children[letter[i] - offset] == null)
+				return false;
+			current = current.children[letter[i] - offset];
+		}
+		
+		if(i == l && current == null){
+			System.out.println("here 1");
+			return false;
+		}
+		if(current != null && !current.fullWord){
+			System.out.println("here 2");
+			return false;
+		}
+		return true;
+	}
+	
+	
+}
